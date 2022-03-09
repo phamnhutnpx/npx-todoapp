@@ -1,4 +1,4 @@
-import React,{PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 // import các component
 import Header from './component/Header';
@@ -30,11 +30,13 @@ class App extends PureComponent {
   state = {
     listTodo: [{
       id: 1,
+      createTimeNow: "23:22 12-03-2022",
       text: 'Todo 1',
       isComplete: true
     },
     {
       id: 2,
+      createTimeNow: "23:22 12-03-2022",
       text: 'Todo 2',
       isComplete: false
     }],
@@ -49,19 +51,19 @@ class App extends PureComponent {
     })
   }
   // thêm todo mới
-  addTodo = (todo = {}) => { 
+  addTodo = (todo = {}) => {
     this.setState(preState => ({
-      listTodo: [...preState.listTodo,todo]
+      listTodo: [...preState.listTodo, todo]
     }))
   }
   // lấy dữ liệu todo ra để edit
   getTodoEditingId = (id = '') => {
-    this.setState({todoEditingId: id})
+    this.setState({ todoEditingId: id })
   }
   // bắt sự kiện khi đúp chuột vào cái todo
   onEditTodo = (todo = {}, index = -1) => {
-    if(index >= 0){
-      const { listTodo: list} = this.state;
+    if (index >= 0) {
+      const { listTodo: list } = this.state;
       list.splice(index, 1, todo);
       this.setState({
         listTodo: list,
@@ -81,16 +83,16 @@ class App extends PureComponent {
   // xử lí check all completed
   checkAllTodo = () => {
     const { listTodo, isCheckedAll } = this.state;
-    this.setState( preState => (
+    this.setState(preState => (
       {
-        listTodo: listTodo.map(todo => ({...todo, isComplete: !isCheckedAll})),
+        listTodo: listTodo.map(todo => ({ ...todo, isComplete: !isCheckedAll })),
         isCheckedAll: !preState.isCheckedAll
       }
     ))
   }
   // 
   setStatusFilter = (status = '') => {
-   this.setState({
+    this.setState({
       status
     })
   }
@@ -108,12 +110,12 @@ class App extends PureComponent {
       listTodo: filterByStatus(listTodo, 'REMOVE', id)
     })
   }
-  
+
   render() {
     const { listTodo, todoEditingId, isCheckedAll, status } = this.state;
     return (
       <div className="App">
-        <Header 
+        <Header
           addTodo={this.addTodo}
         />
         <Menu
@@ -123,7 +125,7 @@ class App extends PureComponent {
           numOfTodo={listTodo.length}
           numOfTodoLeft={filterByStatus(listTodo, 'ACTIVE').length}
         />
-        <TodoList 
+        <TodoList
           listTodo={filterByStatus(listTodo, status)}
           getTodoEditingId={this.getTodoEditingId}
           todoEditingId={todoEditingId}

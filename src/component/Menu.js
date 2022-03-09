@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Menu = (props) => {
-    const { setStatusFilter, status, numOfTodo, numOfTodoLeft, clearCompleted} = props;
+    const {
+        setStatusFilter,
+        status,
+        numOfTodo,
+        numOfTodoLeft,
+        clearCompleted } = props;
     const filterBtns = [
         {
             title: 'Todo All',
@@ -44,7 +49,7 @@ const FilterBtn = (props) => {
     return (
         <>
             <li>
-                <a 
+                <a
                     href={`#/${link}`}
                     className={`${isActive ? 'btn btn-primary ' : 'btn'}`}
                     onClick={onClick}
