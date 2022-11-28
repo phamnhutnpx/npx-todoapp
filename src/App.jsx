@@ -20,7 +20,7 @@ function App() {
         height: "90vh",
       }}
     >
-      <Title style={{ textAlign: "center" }}>TODO APP</Title>
+      <Title style={{ textAlign: "center" }}>NPX TODO</Title>
       <Filters />
       <Divider />
       <TodoList />

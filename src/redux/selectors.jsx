@@ -9,7 +9,7 @@
 // export const searchTextSelector = (state) => state.filters.search;
 
 // Cách 2: dùng thư viện reselect cho tiện
-import { createSelector } from "reselect";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const searchTextSelector = (state) => state.filters.search;
 export const statusSelector = (state) => state.filters.status;
